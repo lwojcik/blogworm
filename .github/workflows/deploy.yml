@@ -1,4 +1,4 @@
-name: Scheduled deployment
+name: Deploy site
 on:
 #   schedule: # Run workflow automatically
 #     - cron: '0 */8 * * *' # Runs every 4 hours, on the hour
