@@ -1,42 +1,66 @@
 const { extract } = require("@extractus/feed-extractor");
-const cacheFavicon = require("./_11ty/helpers/cacheFavicon");
+const cacheAvatar = require("./_11ty/helpers/cacheAvatar");
+const addHash = require("./_11ty/helpers/addHash");
+const getFulfilledValues = require("./_11ty/helpers/getFulfilledValues");
 
 module.exports = function (eleventyConfig) {
+  // --- Copy assets
+
   eleventyConfig.addPassthroughCopy("assets");
+
+  // --- Layout aliases
 
   eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
   eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
 
-  eleventyConfig.addCollection("blogPosts", async function (collectionApi) {
+  // --- Filters
+
+  eleventyConfig.addFilter("addHash", addHash);
+
+  // --- Collections
+
+  eleventyConfig.addCollection("sites", function (collectionApi) {
+    return collectionApi
+      .getFilteredByTag("site")
+      .filter((item) => !item.data.disabled)
+      .slice()
+      .sort((a, b) => a.data.name.localeCompare(b.data.name));
+  });
+
+  eleventyConfig.addCollection("articles", async function (collectionApi) {
     const blogs = collectionApi
-      .getFilteredByTag("blog")
+      .getFilteredByTag("site")
       .filter((item) => !item.data.disabled);
 
-    const allBlogPosts = await Promise.all(
-      blogs.map(async (blog) => {
-        const { data } = blog;
-        const { favicon, name, feed } = data;
+    const allSiteFeeds = blogs.map(async (blog) => {
+      const { data } = blog;
+      const { avatar, name, feed } = data;
 
-        const feedContent = await extract(feed);
+      const feedContent = await extract(feed, {
+        descriptionMaxLen: 512,
+      });
 
-        const cachedFavicon = await cacheFavicon({
-          url: favicon,
-          name,
-        });
+      const cachedAvatar = await cacheAvatar({
+        url: avatar,
+        name,
+      });
 
-        return feedContent.entries.map((entry) => ({
+      return feedContent.entries
+        .map((entry) => ({
           ...entry,
-          favicon: cachedFavicon,
+          avatar: cachedAvatar,
           author: {
             name: data.name,
             url: data.url,
           },
-        }));
-      })
-    );
+        }))
+        .sort((a, b) => new Date(b.published) - new Date(a.published))
+        .slice(0, 20);
+    });
 
-    // Flatten and sort items by date (newest first)
-    const sortedItems = allBlogPosts
+    const allArticles = await getFulfilledValues(allSiteFeeds);
+
+    const sortedItems = allArticles
       .flat()
       .sort((a, b) => new Date(b.published) - new Date(a.published));
 

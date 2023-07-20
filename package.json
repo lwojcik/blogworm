@@ -1,12 +1,26 @@
 {
   "name": "blogworm.eu",
-  "version": "1.0.0",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "dev": "npx eleventy --serve --quiet"
+    "prebuild": "npm run clean",
+    "build:eleventy": "npx eleventy --quiet",
+    "build": "npm-run-all build:*",
+    "watch:eleventy": "npx eleventy --serve --quiet",
+    "watch:sass": "sass --no-source-map --watch ./src/styles:_site/css --style compressed",
+    "build:sass": "sass --no-source-map src/styles:_site/css --style compressed",
+    "clean": "rimraf _site",
+    "predev": "npm run clean",
+    "dev": "npm-run-all build:sass --parallel watch:*",
+    "debug": "DEBUG=Eleventy* npm run dev"
   },
   "dependencies": {
     "@11ty/eleventy": "2.0.1",
     "@extractus/feed-extractor": "6.2.4",
-    "slugify": "^1.6.6"
+    "luxon": "^3.3.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^5.0.0",
+    "sass": "^1.59.3",
+    "slugify": "1.6.6"
   }
 }

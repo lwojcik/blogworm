@@ -1,0 +1,28 @@
+@import "vendors/all";
+@import "partials/menu";
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1em;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.article {
+  padding: 2rem 0;
+  border-bottom: 1px solid black;
+}
+
+.post-title {
+  font-size: 2em;
+  color: #222;
+  margin-bottom: 0.2em;
+}

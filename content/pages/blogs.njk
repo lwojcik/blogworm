@@ -1,0 +1,14 @@
+---
+layout: page
+title: Blogs
+eleventyExcludeFromCollections: true
+permalink: /blogs/
+---
+
+blogs yooo
+
+{% for site in collections.sites %}
+<div>
+{{ site.data.name }}
+</div>
+{% endfor %}
