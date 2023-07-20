@@ -1,8 +1,0 @@
-{
-  "language": "en",
-  "layout": "page",
-  "tags": ["page"],
-  "permalink": "{% if customPermalink %}{{ customPermalink }}{% else %}{{ title | slugify }}/{% endif %}",
-  "canonical": "{{ title | slugify }}",
-  "published": true
-}

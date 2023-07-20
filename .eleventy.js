@@ -1,72 +1,42 @@
-const {
-  initialSetup,
-  layoutAliases,
-  collections,
-  transforms,
-  shortcodes,
-  filters,
-  plugins,
-  constants,
-  events,
-} = require('./_11ty');
+const { extract } = require("@extractus/feed-extractor");
 
 module.exports = function (eleventyConfig) {
-  // --- Initial config
+  // Copy static assets
+  eleventyConfig.addPassthroughCopy("assets");
 
-  initialSetup(eleventyConfig);
+  eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
+  eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
 
-  // --- Layout aliases
+  // RSS feeds data
+  eleventyConfig.addCollection("feedItems", async function (collectionApi) {
+    // Fetch the list of RSS feeds from the directory
+    const feeds = collectionApi.getFilteredByTag("feed");
 
-  Object.entries(layoutAliases).forEach(([name, path]) => {
-    eleventyConfig.addLayoutAlias(name, path);
+    // Fetch all items from all RSS feeds
+    const allItems = await Promise.all(
+      feeds.map(async (feed) => {
+        const url = feed.data.url;
+        const result = await extract(url);
+        return result.entries;
+      })
+    );
+
+    // Flatten and sort items by date (newest first)
+    const sortedItems = allItems
+      .flat()
+      .sort((a, b) => new Date(b.published) - new Date(a.published));
+
+    console.log(allItems);
+
+    return sortedItems;
   });
-
-  // --- Collections
-
-  Object.values(collections).forEach(({ name, body }) => {
-    eleventyConfig.addCollection(name, body);
-  });
-
-  // --- Transformations
-
-  Object.values(transforms).forEach(({ name, body }) => {
-    eleventyConfig.addTransform(name, body);
-  });
-
-  // --- Filters
-
-  Object.values(filters).forEach(({ name, body }) => {
-    eleventyConfig.addFilter(name, body);
-  });
-
-  // --- Shortcodes
-
-  Object.values(shortcodes).forEach(({ name, body }) => {
-    eleventyConfig.addShortcode(name, body);
-  });
-
-  // --- Plugins
-
-  Object.values(plugins).forEach(({ body, options }) => {
-    eleventyConfig.addPlugin(body, options && options);
-  });
-
-  // --- After build events
-
-  if (events.after.length > 0) {
-    Object.values(events.after).forEach((afterBuildEvent) => {
-      eleventyConfig.on('eleventy.after', afterBuildEvent);
-    });
-  }
-
-  // --- Consolidating everything under content folder
 
   return {
     dir: {
-      input: constants.CONTENT_FOLDER,
+      input: "content",
     },
-    templateFormats: ['md', 'njk'],
-    htmlTemplateEngine: 'njk',
-    markdownTemplateEngine: 'njk',
+    templateFormats: ["md", "njk"],
+    htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
   };
 };
