@@ -6,7 +6,6 @@
     "prebuild": "npm run clean",
     "build:eleventy": "npx eleventy --quiet",
     "build": "npm-run-all build:*",
-    "postbuild": "npm run minify:js",
     "watch:eleventy": "npx eleventy --serve --quiet",
     "watch:sass": "sass --no-source-map --watch ./styles:_site/css --style compressed",
     "build:sass": "sass --no-source-map styles:_site/css --style compressed",
