@@ -1,32 +1,44 @@
 const { extract } = require("@extractus/feed-extractor");
+const cacheFavicon = require("./_11ty/helpers/cacheFavicon");
 
 module.exports = function (eleventyConfig) {
-  // Copy static assets
   eleventyConfig.addPassthroughCopy("assets");
 
   eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
   eleventyConfig.addLayoutAlias("page", "layouts/page.njk");
 
-  // RSS feeds data
-  eleventyConfig.addCollection("feedItems", async function (collectionApi) {
-    // Fetch the list of RSS feeds from the directory
-    const feeds = collectionApi.getFilteredByTag("feed");
+  eleventyConfig.addCollection("blogPosts", async function (collectionApi) {
+    const blogs = collectionApi
+      .getFilteredByTag("blog")
+      .filter((item) => !item.data.disabled);
 
-    // Fetch all items from all RSS feeds
-    const allItems = await Promise.all(
-      feeds.map(async (feed) => {
-        const url = feed.data.url;
-        const result = await extract(url);
-        return result.entries;
+    const allBlogPosts = await Promise.all(
+      blogs.map(async (blog) => {
+        const { data } = blog;
+        const { favicon, name, feed } = data;
+
+        const feedContent = await extract(feed);
+
+        const cachedFavicon = await cacheFavicon({
+          url: favicon,
+          name,
+        });
+
+        return feedContent.entries.map((entry) => ({
+          ...entry,
+          favicon: cachedFavicon,
+          author: {
+            name: data.name,
+            url: data.url,
+          },
+        }));
       })
     );
 
     // Flatten and sort items by date (newest first)
-    const sortedItems = allItems
+    const sortedItems = allBlogPosts
       .flat()
       .sort((a, b) => new Date(b.published) - new Date(a.published));
-
-    console.log(allItems);
 
     return sortedItems;
   });
