@@ -14,8 +14,16 @@ permalink: "{% if pagination.pageNumber > 0 %}/{{ pagination.pageNumber + 1 }}{%
 
 <h2><a href="{{ item.link }}">{{ item.title }}</a></h2>
 
-<p>Published by <img src="{{ item.favicon }}" /> <a href="{{ item.author.url }}">{{ item.author.name }}</a> on {{ item.published }}</p>
+<p>Published by <img src="/{{ item.favicon }}" /> <a href="{{ item.author.url }}">{{ item.author.name }}</a> on {{ item.published }}</p>
 
 <p>{{ item.description | safe }}</p>
 
 {% endfor %}
+
+
+{%- set totalPages = pagination.pages|length -%}
+{%- set currentPage = pagination.pageNumber + 1 -%}
+{%- set previousHref = pagination.href.previous -%}
+{%- set nextHref = pagination.href.next -%}
+
+{% include "partials/pagination.njk" %}
