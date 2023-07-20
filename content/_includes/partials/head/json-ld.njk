@@ -1,0 +1,16 @@
+{%- set jsonLD -%}
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{%- if title -%}{{ title }}{%- else -%}{{ site.title }}{%- endif -%}",
+        "image": ["{{ ogImage }}"],
+        "author": {
+            "@type": "Person",
+            "name": "{{ author.name }}"
+        },
+        "mainEntityOfPage": "{{ page.url | alwaysProductionUrl }}",
+        "datePublished": "{{ collections.publishedPosts | getNewestCollectionItemDate | isoDate }}",
+        "description": "{{ pageDescription }}"
+    }
+{% endset -%}
+<script type="application/ld+json">{{ jsonLD | minifyInlineJSON | safe }}</script>

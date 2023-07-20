@@ -1,0 +1,24 @@
+---
+layout: base
+---
+
+{% if siteConfig.enableReadingProgressBar %}
+<div class="reading-progress-bar"></div>
+{% endif %}
+
+<article class="single-article">
+
+  {% include "partials/post/image.njk" %}
+
+  <header>
+    <h1>{{ title }}</h1>
+  </header>
+  {% include "partials/post/top-meta.njk" %}
+  {% include "disclaimers/disclaimer.njk" %}
+  {{ content | safe }}
+</article>
+
+{% include "partials/post/author-info.njk" %}
+{% include "partials/post/bottom-meta.njk" %}
+{% include "partials/post/navigation.njk" %}
+{% include "partials/scroll-up-arrow.njk" %}
