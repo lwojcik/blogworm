@@ -6,7 +6,10 @@ const getFulfilledValues = require("./_11ty/helpers/getFulfilledValues");
 module.exports = function (eleventyConfig) {
   // --- Copy assets
 
-  eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy({
+    "assets/images": "images",
+    "assets/js": "js",
+  });
 
   // --- Layout aliases
 

@@ -1,4 +1,4 @@
-.custom-wrapper {
+.menu-wrapper {
   background-color: #ffd390;
   margin-bottom: 1em;
   -webkit-font-smoothing: antialiased;
@@ -8,10 +8,10 @@
   -moz-transition: height 0.5s;
   -ms-transition: height 0.5s;
   transition: height 0.5s;
-}
 
-.custom-wrapper.open {
-  height: 9em;
+  &.open {
+    height: 9em;
+  }
 }
 
 .custom-menu-3 {

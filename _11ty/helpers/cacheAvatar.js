@@ -4,9 +4,9 @@ const path = require("path");
 const slugify = require("./slugify");
 
 const DIST_PATH = "_site";
-const AVATAR_DIR = path.join("assets", "avatars");
+const AVATAR_DIR = path.join("images", "avatars");
 const DEFAULT_AVATAR_FILE = "default_avatar.jpg";
-const DEFAULT_AVATAR_PATH = path.join("assets", "images", DEFAULT_AVATAR_FILE);
+const DEFAULT_AVATAR_PATH = path.join("images", DEFAULT_AVATAR_FILE);
 
 module.exports = async ({ url, name }) => {
   try {
