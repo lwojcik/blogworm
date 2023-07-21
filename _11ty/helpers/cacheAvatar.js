@@ -25,7 +25,10 @@ module.exports = async ({ url, name }) => {
     const buffer = await response.buffer();
 
     const contentType = response.headers.get("content-type");
-    if (contentType && contentType.includes("image/svg+xml")) {
+    if (
+      (contentType && contentType.includes("image/svg+xml")) ||
+      (contentType && contentType.includes("image/vnd.microsoft.icon"))
+    ) {
       const savePath = path.join(DIST_PATH, AVATAR_DIR, fileName);
 
       const dirPath = path.dirname(savePath);
@@ -53,6 +56,7 @@ module.exports = async ({ url, name }) => {
 
     return path.join(AVATAR_DIR, fileName);
   } catch (error) {
+    console.log(error);
     return DEFAULT_AVATAR_PATH;
   }
 };
