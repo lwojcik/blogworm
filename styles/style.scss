@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-  max-width: 55rem;
+  max-width: 48rem;
   margin: 0 auto;
   padding: 0 1em;
 }
@@ -22,11 +22,14 @@ a {
 }
 
 .article {
-  padding: 2rem 0;
+  padding: 2rem 0.5rem;
   border-bottom: 1px solid #bbb;
 }
 
 .post-title {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
   margin-bottom: 2rem;
 }
 

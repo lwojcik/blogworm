@@ -58,9 +58,8 @@
   display: block;
   width: 2rem;
   height: 2px;
-  border-radius: 100px;
   position: absolute;
-  top: 25px;
+  top: 22px;
   right: 7px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -96,5 +95,6 @@
 
   .custom-toggle {
     display: block;
+    height: 44px;
   }
 }
