@@ -1,16 +1,42 @@
 .menu-wrapper {
-  background-color: #ffd390;
+  font-family: var(--sans-serif-font-family);
+  background-color: #191818;
+  color: #ededed;
   margin-bottom: 1em;
   -webkit-font-smoothing: antialiased;
-  height: 2.1em;
+  height: 44px;
   overflow: hidden;
   -webkit-transition: height 0.5s;
   -moz-transition: height 0.5s;
   -ms-transition: height 0.5s;
   transition: height 0.5s;
+  display: flex;
+  align-items: center;
+
+  li {
+    line-height: 1;
+  }
+
+  .site-title {
+    font-size: 1.3rem;
+    padding: 0.6rem 1rem;
+    color: #bbb;
+    height: 100%;
+  }
+
+  a.pure-menu-link {
+    font-family: var(--sans-serif-font-family);
+    color: #999;
+
+    &:hover,
+    &:focus {
+      color: #ededed;
+      background-color: transparent;
+    }
+  }
 
   &.open {
-    height: 9em;
+    height: 12rem;
   }
 }
 
@@ -19,8 +45,8 @@
 }
 
 .custom-toggle {
-  width: 34px;
-  height: 34px;
+  width: 3rem;
+  height: 3rem;
   position: absolute;
   top: 0;
   right: 0;
@@ -30,11 +56,11 @@
 .custom-toggle .bar {
   background-color: #777;
   display: block;
-  width: 20px;
+  width: 2rem;
   height: 2px;
   border-radius: 100px;
   position: absolute;
-  top: 18px;
+  top: 25px;
   right: 7px;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;

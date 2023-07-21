@@ -8,21 +8,18 @@ pagination:
 permalink: "{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber + 1 }}{% endif %}/"
 ---
 
-<h2>Latest News</h2>
-
 {% for item in items %}
-<section class="article">
-<h2 class="post-title"><a href="{{ item.link }}">{{ item.title }}</a></h2>
-
-<p>Published by <img src="/{{ item.avatar }}" /> <a href="{{ item.author.url }}">{{ item.author.name }}</a> on {{ item.published }}</p>
-
-<p>{{ item.description | safe }}</p>
-</section>
+  {% set link = item.link %}
+  {% set title = item.title %}
+  {% set avatar = item.avatar %}
+  {% set authorUrl = item.author.url %}
+  {% set authorName = item.author.name %}
+  {% set published = item.published|readableDate %}
+  {% set description = item.description | safe %}
+  {% include "partials/post.njk" %}
 {% endfor %}
 
 {%- set totalPages = pagination.pages|length -%}
 {%- set currentPage = pagination.pageNumber + 1 -%}
 {%- set previousHref = pagination.href.previous -%}
-{%- set nextHref = pagination.href.next -%}
-
-{% include "partials/pagination.njk" %}
+{%- set nextHref = pagination.href.next -%}{% include "partials/pagination.njk" %}

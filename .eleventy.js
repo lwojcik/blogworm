@@ -2,6 +2,7 @@ const { extract } = require("@extractus/feed-extractor");
 const cacheAvatar = require("./_11ty/helpers/cacheAvatar");
 const addHash = require("./_11ty/helpers/addHash");
 const getFulfilledValues = require("./_11ty/helpers/getFulfilledValues");
+const readableDate = require("./_11ty/helpers/readableDate");
 
 module.exports = function (eleventyConfig) {
   // --- Copy assets
@@ -19,6 +20,8 @@ module.exports = function (eleventyConfig) {
   // --- Filters
 
   eleventyConfig.addFilter("addHash", addHash);
+
+  eleventyConfig.addFilter("readableDate", readableDate);
 
   // --- Collections
 
