@@ -1,11 +1,13 @@
 const { extract } = require("@extractus/feed-extractor");
 const faviconsPlugin = require("eleventy-plugin-gen-favicons");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 const cacheAvatar = require("./_11ty/helpers/cacheAvatar");
 const addHash = require("./_11ty/helpers/addHash");
 const getFulfilledValues = require("./_11ty/helpers/getFulfilledValues");
 const readableDate = require("./_11ty/helpers/readableDate");
 const addRef = require("./_11ty/helpers/addRef");
 const minifyHTML = require("./_11ty/helpers/minifyHTML");
+const siteConfig = require("./content/_data/siteConfig");
 
 module.exports = function (eleventyConfig) {
   // --- Copy assets
@@ -26,6 +28,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("addHash", addHash);
   eleventyConfig.addFilter("readableDate", readableDate);
   eleventyConfig.addFilter("addRef", addRef);
+  eleventyConfig.addFilter(
+    "alwaysProductionUrl",
+    (path) => new URL(path, siteConfig.url)
+  );
 
   // --- Collections
 
@@ -92,7 +98,8 @@ module.exports = function (eleventyConfig) {
 
   // --- Plugins
 
-  eleventyConfig.addPlugin(faviconsPlugin, {});
+  eleventyConfig.addPlugin(faviconsPlugin);
+  eleventyConfig.addPlugin(pluginRss);
 
   // --- Transforms
 

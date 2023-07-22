@@ -2,6 +2,7 @@ const packageJson = require("../../package.json");
 
 module.exports = {
   title: "Blogworm",
+  url: "https://blogworm.eu",
   addRefToExternalLinks: false,
   ref: "blogworm.eu",
   language: "en",
@@ -13,6 +14,5 @@ module.exports = {
   },
   dateFormats: {
     readable: "d LLL yyyy",
-    fullReadable: "d LLLL yyyy",
   },
 };

@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@11ty/eleventy": "2.0.1",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
     "@extractus/feed-extractor": "6.2.4",
     "eleventy-plugin-gen-favicons": "^1.1.2",
     "html-minifier-terser": "^7.2.0",
