@@ -2,7 +2,6 @@ const packageJson = require("../../package.json");
 
 module.exports = {
   title: "Blogworm",
-  subtitle: "Awesome Blogs In One Place",
   addRefToExternalLinks: true,
   ref: "blogworm.eu",
   language: "en",

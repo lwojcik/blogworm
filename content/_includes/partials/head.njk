@@ -1,5 +1,4 @@
 {% set siteTitle = siteConfig.title %}
-{% set subtitle = siteConfig.subtitle %}
 
 {%- set pageTitle -%}
   {%- if pagination.pageNumber > 0 -%}
@@ -7,7 +6,7 @@
   {%- elif title -%}
     {{ title | safe }}
   {%- else -%}
-    {{ siteTitle }} | {{ subtitle }}
+    {{ siteTitle }}
   {%- endif -%}
 {%- endset -%}
 
