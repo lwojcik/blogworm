@@ -23,7 +23,7 @@ Sorry, not at the moment. I have a sizable backlog of blogs to process. I'll be 
 
 If we already met before (e.g. talked on [Mastodon](https://hachyderm.io/@lukem)?) - there's non-zero chance your blog is already on my list.
 
-If not - stay tuned. I'll update this section once I'm ready to accept submissions.
+If not, stay tuned. I'll update this section once I'm ready to accept submissions.
 
 ## My blog is already here but I want to change something
 

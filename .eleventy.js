@@ -53,7 +53,7 @@ module.exports = function (eleventyConfig) {
             },
           }))
           .sort((a, b) => new Date(b.published) - new Date(a.published))
-          .slice(0, 20);
+          .slice(0, 10);
       });
 
       const allArticles = await getFulfilledValues(allSiteFeeds);
