@@ -5,7 +5,7 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 <title>{{ siteConfig.title }}</title>
-<link href="{{ '/rss.xml' | alwaysProductionUrl }}" rel="self" />
+<link href="{{ '/feed.xml' | alwaysProductionUrl }}" rel="self" />
 <link href="{{ '/' | alwaysProductionUrl }}" rel="alternate" />
 <updated>{{ collections.articles[0].published }}</updated>
 <author>
