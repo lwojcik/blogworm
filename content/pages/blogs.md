@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Blogs
+title: Blogs on Blogworm
 eleventyExcludeFromCollections: true
 permalink: /blogs/
 ---

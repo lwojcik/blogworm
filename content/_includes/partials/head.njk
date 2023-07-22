@@ -2,11 +2,13 @@
 {% set subtitle = siteConfig.subtitle %}
 
 {%- set pageTitle -%}
-    {%- if pagination.pageNumber > 0 -%}
-      {{ siteTitle }} | Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages|length }} 
-    {%- else -%}
-      {{ siteTitle }} | {{ subtitle }}
-    {%- endif -%}
+  {%- if pagination.pageNumber > 0 -%}
+    {{ siteTitle }} | Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages|length }} 
+  {%- elif title -%}
+    {{ title | safe }}
+  {%- else -%}
+    {{ siteTitle }} | {{ subtitle }}
+  {%- endif -%}
 {%- endset -%}
 
 <meta charset="UTF-8">
