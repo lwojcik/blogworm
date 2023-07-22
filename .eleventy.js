@@ -37,44 +37,68 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("articles", async function (collectionApi) {
-    const blogs = collectionApi
-      .getFilteredByTag("site")
-      .filter((item) => !item.data.disabled);
+    try {
+      const blogs = collectionApi
+        .getFilteredByTag("site")
+        .filter((item) => !item.data.disabled);
 
-    const allSiteFeeds = blogs.map(async (blog) => {
-      const { data } = blog;
-      const { avatar, name, feed } = data;
+      const allSiteFeeds = blogs.map(async (blog) => {
+        const { data } = blog;
+        const { avatar, name, feed } = data;
 
-      const feedContent = await extract(feed, {
-        descriptionMaxLen: 512,
+        const feedContent = await extract(feed, {
+          descriptionMaxLen: 512,
+        });
+
+        return feedContent.entries
+          .map((entry) => ({
+            ...entry,
+            avatar: blog.data.avatar,
+            author: {
+              name: data.name,
+              url: data.url,
+            },
+          }))
+          .sort((a, b) => new Date(b.published) - new Date(a.published))
+          .slice(0, 20);
       });
 
-      const cachedAvatar = await cacheAvatar({
-        url: avatar,
-        name,
-      });
+      const allArticles = await getFulfilledValues(allSiteFeeds);
 
-      return feedContent.entries
-        .map((entry) => ({
-          ...entry,
-          avatar: cachedAvatar,
-          author: {
-            name: data.name,
-            url: data.url,
-          },
-        }))
-        .sort((a, b) => new Date(b.published) - new Date(a.published))
-        .slice(0, 20);
-    });
+      const sortedItems = allArticles
+        .flat()
+        .sort((a, b) => new Date(b.published) - new Date(a.published));
 
-    const allArticles = await getFulfilledValues(allSiteFeeds);
-
-    const sortedItems = allArticles
-      .flat()
-      .sort((a, b) => new Date(b.published) - new Date(a.published));
-
-    return sortedItems;
+      return sortedItems;
+    } catch (error) {
+      console.log(erorr);
+      throw new Error(error);
+    }
   });
+
+  eleventyConfig.addCollection(
+    "sitesWithCachedAvatars",
+    async function (collectionApi) {
+      const sites = collectionApi
+        .getFilteredByTag("site")
+        .filter((item) => !item.data.disabled)
+        .slice()
+        .sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+      const sitesWithCachedAvatars = await Promise.all(
+        sites.map(async (site) => {
+          const cachedAvatar = await cacheAvatar({
+            url: site.data.avatar,
+            name: site.data.name,
+          });
+          site.data.avatar = cachedAvatar;
+          return site;
+        })
+      );
+
+      return sitesWithCachedAvatars;
+    }
+  );
 
   // --- Plugins
 

@@ -1,6 +1,6 @@
 <div class="bloglist">
 <ul>
-{% for site in collections.sites %}
+{% for site in collections.sitesWithCachedAvatars %}
   {% include "partials/bloglist-item.njk" %}
 {% endfor %}
 </ul>

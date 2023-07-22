@@ -7,7 +7,7 @@ const sharp = require("sharp"); // Import the sharp library
 const DIST_PATH = "_site";
 const AVATAR_DIR = path.join("images", "avatars");
 const DEFAULT_AVATAR_FILE = "default_avatar.jpg";
-const DEFAULT_AVATAR_PATH = path.join("images", DEFAULT_AVATAR_FILE);
+const DEFAULT_AVATAR_PATH = path.join("/", "images", DEFAULT_AVATAR_FILE);
 
 module.exports = async ({ url, name }) => {
   try {
@@ -36,7 +36,7 @@ module.exports = async ({ url, name }) => {
 
       fs.writeFileSync(savePath, buffer);
 
-      return path.join(AVATAR_DIR, fileName);
+      return path.join("/", AVATAR_DIR, fileName);
     }
 
     let resizedBuffer = buffer;
@@ -54,7 +54,7 @@ module.exports = async ({ url, name }) => {
 
     fs.writeFileSync(savePath, resizedBuffer);
 
-    return path.join(AVATAR_DIR, fileName);
+    return path.join("/", AVATAR_DIR, fileName);
   } catch (error) {
     console.log(error);
     return DEFAULT_AVATAR_PATH;
