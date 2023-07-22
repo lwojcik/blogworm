@@ -47,7 +47,7 @@ module.exports = function (eleventyConfig) {
         const { name, url, avatar, feed } = data;
 
         const feedContent = await extract(feed, {
-          descriptionMaxLen: 500,
+          descriptionMaxLen: siteConfig.maxPostLength,
         });
 
         return feedContent.entries
@@ -60,7 +60,7 @@ module.exports = function (eleventyConfig) {
             },
           }))
           .sort((a, b) => new Date(b.published) - new Date(a.published))
-          .slice(0, 10);
+          .slice(0, siteConfig.maxItemsPerFeed);
       });
 
       const allArticles = await getFulfilledValues(allSiteFeeds);

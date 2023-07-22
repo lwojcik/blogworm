@@ -12,7 +12,15 @@ module.exports = {
     name: "Eleventy",
     version: packageJson.dependencies["@11ty/eleventy"].replace("^", ""),
   },
+  author: {
+    name: "Łukasz Wójcik",
+    homepage: "https://lukaszwojcik.net/",
+    contact: "https://lukaszwojcik.net/contact/",
+    blog: "https://offbeatbits.com/",
+  },
   dateFormats: {
     readable: "d LLL yyyy",
   },
+  maxPostLength: 500,
+  maxItemsPerFeed: 10,
 };

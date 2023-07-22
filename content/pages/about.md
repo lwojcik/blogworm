@@ -15,7 +15,7 @@ And that name? Blogworm, like "[bookworm](https://dictionary.cambridge.org/dicti
 
 ## And you are... who?
 
-I'm [Łukasz](https://lukaszwojcik.net). Hailing from Warsaw, Poland. Nice to meet you! 👋
+I'm [Łukasz](https://lukaszwojcik.net/). Hailing from Warsaw, Poland. Nice to meet you! 👋
 
 ## Can I suggest my blog?
 
