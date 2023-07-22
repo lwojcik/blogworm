@@ -5,6 +5,7 @@ const addHash = require("./_11ty/helpers/addHash");
 const getFulfilledValues = require("./_11ty/helpers/getFulfilledValues");
 const readableDate = require("./_11ty/helpers/readableDate");
 const addRef = require("./_11ty/helpers/addRef");
+const minifyHTML = require("./_11ty/helpers/minifyHTML");
 
 module.exports = function (eleventyConfig) {
   // --- Copy assets
@@ -27,14 +28,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("addRef", addRef);
 
   // --- Collections
-
-  eleventyConfig.addCollection("sites", function (collectionApi) {
-    return collectionApi
-      .getFilteredByTag("site")
-      .filter((item) => !item.data.disabled)
-      .slice()
-      .sort((a, b) => a.data.name.localeCompare(b.data.name));
-  });
 
   eleventyConfig.addCollection("articles", async function (collectionApi) {
     try {
@@ -76,33 +69,34 @@ module.exports = function (eleventyConfig) {
     }
   });
 
-  eleventyConfig.addCollection(
-    "sitesWithCachedAvatars",
-    async function (collectionApi) {
-      const sites = collectionApi
-        .getFilteredByTag("site")
-        .filter((item) => !item.data.disabled)
-        .slice()
-        .sort((a, b) => a.data.name.localeCompare(b.data.name));
+  eleventyConfig.addCollection("sites", async function (collectionApi) {
+    const sites = collectionApi
+      .getFilteredByTag("site")
+      .filter((item) => !item.data.disabled)
+      .slice()
+      .sort((a, b) => a.data.name.localeCompare(b.data.name));
 
-      const sitesWithCachedAvatars = await Promise.all(
-        sites.map(async (site) => {
-          const cachedAvatar = await cacheAvatar({
-            url: site.data.avatar,
-            name: site.data.name,
-          });
-          site.data.avatar = cachedAvatar;
-          return site;
-        })
-      );
+    const sitesWithCachedAvatars = await Promise.all(
+      sites.map(async (site) => {
+        const cachedAvatar = await cacheAvatar({
+          url: site.data.avatar,
+          name: site.data.name,
+        });
+        site.data.avatar = cachedAvatar;
+        return site;
+      })
+    );
 
-      return sitesWithCachedAvatars;
-    }
-  );
+    return sitesWithCachedAvatars;
+  });
 
   // --- Plugins
 
   eleventyConfig.addPlugin(faviconsPlugin, {});
+
+  // --- Transforms
+
+  eleventyConfig.addTransform("minifyHTML", minifyHTML);
 
   return {
     dir: {

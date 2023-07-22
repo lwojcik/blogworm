@@ -28,6 +28,11 @@
     padding: 0.6rem 1rem;
     color: #bbb;
     height: 100%;
+
+    &:hover,
+    &:focus {
+      color: #ededed;
+    }
   }
 
   a.pure-menu-link {
