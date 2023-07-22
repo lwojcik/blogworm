@@ -21,7 +21,9 @@ const getAllFiles = (dirPath, arrayOfFiles) => {
 const minifyFiles = (filePaths) => {
   filePaths.forEach(async (filePath) => {
     const fileContent = fs.readFileSync(filePath).toString();
-    const minified = await Terser.minify(fileContent);
+    const minified = await Terser.minify(fileContent, {
+      mangle: true,
+    });
     fs.writeFileSync(filePath, minified.code);
   });
 };
