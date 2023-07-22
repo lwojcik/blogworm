@@ -2,10 +2,11 @@ const packageJson = require("../../package.json");
 
 module.exports = {
   title: "Blogworm",
+  subtitle: "Awesome Blogs In One Place",
   addRefToExternalLinks: true,
   ref: "blogworm.eu",
   language: "en",
-  startYear: 2020,
+  startYear: 2023,
   version: 3,
   generator: {
     name: "Eleventy",

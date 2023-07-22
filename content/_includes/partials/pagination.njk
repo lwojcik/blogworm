@@ -4,35 +4,27 @@
       <li class="links previous">
         {% if previousHref %}
           <a href="{{ previousHref }}">
-            <span class="arrow">&larr; </span>Newer <span class="articles">articles</span>
+            <span class="arrow">&larr; </span>Newer posts
           </a>
         {% else %}
           <span class="inactive-link">
-            <span class="arrow">&larr;</span>Newer <span class="articles">articles</span>
+            <span class="arrow">&larr;</span>Newer posts
           </span>
         {% endif %}
       </li>
       {% if currentPage %}
       <li class="current">
-        <form class="jump-to-page-form">
-          <label for="jump-to-page" class="page input-label">Go to page:</label>
-          <div class="fields">
-            <input id="jump-to-page" class="page-number-input" title="{{ phrases.page_number_hint }}" type="number" enterkeyhint="go" inputmode="numeric" min="1" max="{{ totalPages }}" value="{{ currentPage }}">
-            <span class="of">of </span>
-            <span class="total-pages">{{ totalPages }}</span>
-            <input type="submit" class="jump-button" disabled value="Go!">
-          </div>
-        </form>
+        Page {{ currentPage }} of {{ totalPages }}</span>
       </li>
       {% endif %}
       <li class="links next">
       {% if nextHref %}
         <a href="{{ nextHref }}">
-          Older <span class="articles">articles</span> <span class="arrow">&rarr;</span>
+          Older posts <span class="arrow">&rarr;</span>
         </a>
       {% else %}
         <span class="inactive-link">
-          Older <span class="articles">articles</span> <span class="arrow">&rarr;</span>
+          Older posts <span class="arrow">&rarr;</span>
         </span>
       {% endif %}
     </li>

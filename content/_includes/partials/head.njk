@@ -1,0 +1,16 @@
+{% set siteTitle = siteConfig.title %}
+{% set subtitle = siteConfig.subtitle %}
+
+{%- set pageTitle -%}
+    {%- if pagination.pageNumber > 0 -%}
+      {{ siteTitle }} | Page {{ pagination.pageNumber + 1 }} of {{ pagination.pages|length }} 
+    {%- else -%}
+      {{ siteTitle }} | {{ subtitle }}
+    {%- endif -%}
+{%- endset -%}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ pageTitle }}</title>
+<link rel="stylesheet" href="{{ '/css/style.css' | addHash }}">
+<script src="{{ '/js/scripts.js' | addHash }}"></script>

@@ -1,0 +1,47 @@
+.bloglist {
+  margin: 3rem 0;
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    padding: 0.25rem 0rem;
+    margin-bottom: 1rem;
+    font-family: var(--sans-serif);
+    align-items: flex-start;
+
+    .rss {
+      margin-left: 12px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.9875rem;
+
+      img {
+        height: 16px;
+        margin-right: 4px;
+      }
+    }
+
+    .blog-name {
+      margin: 0 0 0.5rem;
+      padding: 0;
+      display: inline;
+    }
+
+    .avatar {
+      height: 22px;
+    }
+
+    p {
+      margin: 0;
+      font-family: var(--sans-serif);
+    }
+
+    a {
+      color: var(--black);
+    }
+  }
+}

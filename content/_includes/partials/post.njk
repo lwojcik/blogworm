@@ -6,7 +6,10 @@
     <img src="/{{ avatar }}" alt="{{ authorName }}'s avatar" />
     <span>{{ authorName }}</span>
   </a>
-  <time>{{ published }}</time>
+  <time>
+    <img class="calendar-icon" src="/images/calendar.svg" alt="Calendar icon" />
+    <span>{{ published }}</span>
+  </time>
 </div>
 <p>{{ item.description | safe }}</p>
 </article>

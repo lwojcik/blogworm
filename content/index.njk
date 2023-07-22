@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: base
 eleventyExcludeFromCollections: true
 pagination:
   data: collections.articles
@@ -7,6 +7,10 @@ pagination:
   alias: items
 permalink: "{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber + 1 }}{% endif %}/"
 ---
+
+<header class="main-heading">
+  <h2>Latest blog posts &darr;</h2>
+</header>
 
 {% for item in items %}
   {% set link = item.link %}

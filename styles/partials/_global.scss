@@ -1,0 +1,17 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--white);
+  color: var(--black);
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+body > main {
+  flex: 1;
+}
