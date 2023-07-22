@@ -37,7 +37,7 @@ module.exports = function (eleventyConfig) {
 
       const allSiteFeeds = blogs.map(async (blog) => {
         const { data } = blog;
-        const { avatar, name, feed } = data;
+        const { name, url, avatar, feed } = data;
 
         const feedContent = await extract(feed, {
           descriptionMaxLen: 512,
@@ -46,10 +46,10 @@ module.exports = function (eleventyConfig) {
         return feedContent.entries
           .map((entry) => ({
             ...entry,
-            avatar: blog.data.avatar,
+            avatar,
             author: {
-              name: data.name,
-              url: data.url,
+              name,
+              url,
             },
           }))
           .sort((a, b) => new Date(b.published) - new Date(a.published))
