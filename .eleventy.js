@@ -40,7 +40,7 @@ module.exports = function (eleventyConfig) {
         const { name, url, avatar, feed } = data;
 
         const feedContent = await extract(feed, {
-          descriptionMaxLen: 512,
+          descriptionMaxLen: 500,
         });
 
         return feedContent.entries
