@@ -2,7 +2,7 @@ const packageJson = require("../../package.json");
 
 module.exports = {
   title: "Blogworm",
-  addRefToExternalLinks: true,
+  addRefToExternalLinks: false,
   ref: "blogworm.eu",
   language: "en",
   startYear: 2023,
