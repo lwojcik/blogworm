@@ -8,6 +8,7 @@ const readableDate = require("./_11ty/helpers/readableDate");
 const addRef = require("./_11ty/helpers/addRef");
 const minifyHTML = require("./_11ty/helpers/minifyHTML");
 const siteConfig = require("./content/_data/siteConfig");
+const minifyXML = require("./_11ty/helpers/minifyXML");
 
 module.exports = function (eleventyConfig) {
   // --- Copy assets
@@ -104,6 +105,7 @@ module.exports = function (eleventyConfig) {
   // --- Transforms
 
   eleventyConfig.addTransform("minifyHTML", minifyHTML);
+  eleventyConfig.addTransform("minifyXML", minifyXML);
 
   return {
     dir: {
