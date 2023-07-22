@@ -15,3 +15,13 @@ body {
 body > main {
   flex: 1;
 }
+
+p a {
+  color: var(--black);
+  text-decoration: underline;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
