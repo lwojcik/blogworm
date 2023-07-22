@@ -3,6 +3,10 @@ const packageJson = require("../../package.json");
 module.exports = {
   title: "Blogworm",
   url: "https://blogworm.eu",
+  github: {
+    project: "https://github.com/lwojcik/blogworm.eu",
+    issue: "https://github.com/lwojcik/blogworm.eu/issues/new",
+  },
   addRefToExternalLinks: false,
   ref: "blogworm.eu",
   language: "en",
@@ -17,6 +21,7 @@ module.exports = {
     homepage: "https://lukaszwojcik.net/",
     contact: "https://lukaszwojcik.net/contact/",
     blog: "https://offbeatbits.com/",
+    mastodon: "https://hachyderm.io/@lukem",
   },
   dateFormats: {
     readable: "d LLL yyyy",

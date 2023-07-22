@@ -15,20 +15,20 @@ And that name? Blogworm, like "[bookworm](https://dictionary.cambridge.org/dicti
 
 ## And you are... who?
 
-I'm [Łukasz](https://lukaszwojcik.net/). Hailing from Warsaw, Poland. Nice to meet you! 👋
+I'm [Łukasz]({{ siteConfig.author.homepage }}). Hailing from Warsaw, Poland. Nice to meet you! 👋
 
 ## Can I suggest my blog?
 
 Sorry, not at the moment. I have a sizable backlog of blogs to process. I'll be adding them in small batches over time.
 
-If we already met before (e.g. talked on [Mastodon](https://hachyderm.io/@lukem)?) - there's non-zero chance your blog is already on my list.
+If we already met before (e.g. talked on [Mastodon]({{ siteConfig.author.mastodon }})?) - there's non-zero chance your blog is already on my list.
 
 If not, stay tuned. I'll update this section once I'm ready to accept submissions.
 
 ## My blog is already here but I want to change something
 
-Sure! [Contact me](https://lukaszwojcik.net/contact/) or [submit a GitHub issue](https://github.com/lwojcik/blogworm.eu/issues/new). I'll get back to you as soon as I can.
+Sure! [Contact me]({{ siteConfig.author.contact }}) or [submit a GitHub issue]({{ siteConfig.github.issue }}). I'll get back to you as soon as I can.
 
 ## Can I have a site like this for myself?
 
-Yes! This site is relatively uncomplicated. I'm still working on the tutorial explaining how to do it, stay tuned. You can also check out [project code on GitHub](https://github.com/lwojcik/blogworm.eu).
+Yes! This site is relatively uncomplicated. I'm still working on the tutorial explaining how to do it, stay tuned. You can also check out [project code on GitHub]({{ siteConfig.github.project }}).
