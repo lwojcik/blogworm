@@ -35,12 +35,14 @@
     }
   }
 
-  a.pure-menu-link {
+  .pure-menu-link {
     font-family: var(--sans-serif);
     color: #999;
+    cursor: pointer;
 
     &:hover,
     &:focus {
+      text-decoration: underline;
       color: #ededed;
       background-color: transparent;
     }

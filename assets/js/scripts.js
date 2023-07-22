@@ -1,4 +1,78 @@
+const themeKey = "theme";
+const darkSetting = "dark";
+const lightSetting = "light";
+
+const htmlElement = document.querySelector("html");
+
+const setTheme = (theme) => {
+  const themeSwitcherBtn = document.querySelector(".theme-switcher");
+
+  const themeSettings = [lightSetting, darkSetting];
+  const [classToRemove, classToAdd] =
+    theme === lightSetting
+      ? [darkSetting, lightSetting]
+      : [lightSetting, darkSetting];
+
+  if (themeSettings.includes(theme)) {
+    htmlElement.classList.remove(classToRemove);
+    themeSwitcherBtn.classList.remove(classToRemove);
+    htmlElement.classList.add(classToAdd);
+    themeSwitcherBtn.classList.add(classToAdd);
+  }
+};
+
 window.addEventListener("DOMContentLoaded", () => {
+  // Dark theme (base switch logic)
+
+  const handleThemeSwitch = () => {
+    const isDarkActive = htmlElement.classList.contains(darkSetting);
+    const desiredSetting = isDarkActive ? lightSetting : darkSetting;
+    setTheme(desiredSetting);
+
+    try {
+      localStorage.setItem(themeKey, desiredSetting);
+    } catch {
+      return false;
+    }
+  };
+
+  const handleThemeSwitchFromKeyboard = (e) => {
+    e.preventDefault();
+    if (e.keyCode === 13) {
+      handleThemeSwitch();
+    }
+  };
+
+  // Dark theme - honor browser preference
+
+  const systemWideDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+
+  if (systemWideDarkMode.matches) {
+    setTheme(darkSetting);
+  }
+
+  systemWideDarkMode.addEventListener("change", (e) => {
+    const colorSchemePreference = e.matches ? darkSetting : lightSetting;
+    setTheme(colorSchemePreference);
+  });
+
+  // Dark theme - honor local storage setting if present
+
+  const currentSavedTheme = localStorage.getItem(themeKey) || null;
+
+  if (currentSavedTheme) {
+    setTheme(currentSavedTheme);
+  }
+
+  // Theme switcher button
+
+  const themeSwitcherBtn = document.querySelector(".theme-switcher");
+
+  themeSwitcherBtn.addEventListener("click", handleThemeSwitch);
+  themeSwitcherBtn.addEventListener("keyup", handleThemeSwitchFromKeyboard);
+
+  // Menu
+
   var menu = document.getElementById("menu"),
     rollback,
     WINDOW_CHANGE_EVENT =

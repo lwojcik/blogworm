@@ -5,8 +5,8 @@ body {
 }
 
 body {
-  background: var(--white);
-  color: var(--black);
+  background: var(--background-color);
+  color: var(--text-color);
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -16,8 +16,9 @@ body > main {
   flex: 1;
 }
 
-p a {
-  color: var(--black);
+p a,
+li a {
+  color: var(--text-color);
   text-decoration: underline;
 
   &:hover,

@@ -8,6 +8,7 @@
 }
 
 a {
+  color: var(--text-color);
   text-decoration: none;
 
   &:hover,
@@ -18,7 +19,7 @@ a {
 
 .main-heading {
   font-size: 2rem;
-  color: #333;
+  color: var(--heading-color);
 
   h2 {
     font-size: 1.25rem;
@@ -43,7 +44,7 @@ a {
   margin: 20px 0 30px;
 
   time {
-    color: #666;
+    color: var(--date-color);
     display: flex;
     align-items: flex-end;
 
