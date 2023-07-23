@@ -6,21 +6,16 @@
   -webkit-font-smoothing: antialiased;
   height: 44px;
   overflow: hidden;
-  -webkit-transition: height 0.5s;
-  -moz-transition: height 0.5s;
-  -ms-transition: height 0.5s;
-  transition: height 0.5s;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -ms-transition: height 0.3s;
+  transition: height 0.3s;
   display: flex;
   align-items: center;
 
   li {
     line-height: 1;
     font-size: 1.25rem;
-  }
-
-  svg {
-    width: 18px;
-    fill: pink;
   }
 
   .site-title {
@@ -75,10 +70,10 @@
   position: absolute;
   top: 22px;
   right: 7px;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  transition: all 0.5s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .custom-toggle .bar:first-child {
