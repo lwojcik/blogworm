@@ -14,7 +14,7 @@ permalink: "{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber + 1
 {%- set nextHref = pagination.href.next -%}
 
 <header class="main-heading">
-  <h2>Latest blog posts{%- if pagination.pageNumber > 0 -%}, page {{ currentPage }} of {{ totalPages }} {%- endif -%}&nbsp;&darr;</h2>
+  <h1>Latest blog posts{%- if pagination.pageNumber > 0 -%}, page {{ currentPage }} of {{ totalPages }} {%- endif -%}&nbsp;&darr;</h1>
 </header>
 
 {% for item in items %}

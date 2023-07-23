@@ -21,7 +21,7 @@ a {
   font-size: 2rem;
   color: var(--heading-color);
 
-  h2 {
+  h1 {
     font-size: 1.25rem;
   }
 }
@@ -67,8 +67,6 @@ a {
     align-items: flex-end;
     padding: 6px 12px 6px 6px;
     margin-right: 24px;
-    line-height: 1;
-    font-size: 16px;
     text-decoration: none;
 
     &:hover,
@@ -90,5 +88,25 @@ a {
       height: 100%;
       font-size: 0.9875rem;
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .post-title {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .post-meta {
+    margin: 15px 0 20px;
+  }
+
+  .post-meta .author img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .post-meta .author span {
+    font-size: 0.875rem;
   }
 }

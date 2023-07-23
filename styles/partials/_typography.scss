@@ -29,3 +29,23 @@ li {
   font-size: 1.25rem;
   line-height: 1.75;
 }
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.875rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p,
+  li {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
