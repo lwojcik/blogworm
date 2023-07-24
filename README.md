@@ -2,7 +2,7 @@
 
 👉 [Site is here](https://blogworm.eu/)
 
-## I'm a blog author you added to this site, could you change something about it / delete my blog?
+## I'm an author of blog you added to this site, could you change something about it / delete my blog entirely?
 
 Yes! [Contact me](https://lukaszwojcik.net/contact/) or [submit an issue](https://github.com/lwojcik/blogworm.eu/issues/new).
 
