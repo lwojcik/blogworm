@@ -1,0 +1,15 @@
+<article class="article">
+<h2 class="post-title"><a href="{{ link | addRef }}">{{ title }}</a></h2>
+
+<div class="post-meta">
+  <a href="{{ authorUrl | addRef }}" class="author">
+    <img src="{{ avatar }}" alt="{{ authorName }}'s avatar" />
+    <span>{{ authorName }}</span>
+  </a>
+  <time>
+    <img class="calendar-icon" src="/images/calendar.svg" alt="Calendar icon" />
+    <span>{{ published }}</span>
+  </time>
+</div>
+<p>{{ item.description | safe }}</p>
+</article>
