@@ -1,13 +1,13 @@
 {% if site.data.url !== 'https://offbeatbits.com/' %}
 <li>
-  <h3 class="blog-name">
-    <img class="avatar" src="{{ site.data.avatar }}" alt="{{ site.data.name }}'s avatar" />
+  <h2 class="blog-name">
+    <img width="22" height="22" class="avatar" src="{{ site.data.avatar }}" alt="{{ site.data.name }}'s avatar" />
     <a href="{{ site.data.url | addRef }}">
       {{ site.data.name }}
     </a>
-  </h3>
+  </h2>
   <div class="rss">
-    <img src="/images/rss.svg" alt="RSS icon" /> <a href="{{ site.data.feed }}">RSS Feed</a>
+    <img width="16" height="16" src="/images/rss.svg" alt="RSS icon" /> <a href="{{ site.data.feed }}">RSS Feed</a>
   </div>
 </li>
 {% endif %}
