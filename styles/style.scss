@@ -110,3 +110,9 @@ a {
     font-size: 0.875rem;
   }
 }
+
+@media screen and (min-width: 481px) {
+  .menu-wrapper .custom-menu-3 {
+    display: block;
+  }
+}
