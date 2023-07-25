@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy site
-        uses: lwojcik/github-action-deploy-static-site@v1
+        uses: lwojcik/github-action-deploy-static-site@v1.1.0-beta.0
         with:
           platform: netlify
           netlify_deploy_hook_url: ${{ secrets.NETLIFY_DEPLOY_HOOK_URL }}
+          always_deploy: true
