@@ -10,6 +10,18 @@
   display: flex;
   align-items: center;
 
+  .custom-menu-3 {
+    display: none;
+  }
+
+  &.open {
+    height: 14rem;
+
+    .custom-menu-3 {
+      display: block;
+    }
+  }
+
   li {
     line-height: 1;
     font-size: 1.25rem;
@@ -40,10 +52,6 @@
       background-color: transparent;
     }
   }
-
-  &.open {
-    height: 14rem;
-  }
 }
 
 .custom-menu-3 {
@@ -51,6 +59,7 @@
 }
 
 .custom-toggle {
+  cursor: pointer;
   width: 3rem;
   height: 3rem;
   position: absolute;
