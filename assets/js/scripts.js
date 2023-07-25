@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const handleThemeSwitchFromKeyboard = (e) => {
     e.preventDefault();
-    if (e.keyCode === 13) {
+    if (e.key === "Enter") {
       handleThemeSwitch();
     }
   };
@@ -112,6 +112,14 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("toggle").addEventListener("click", function (e) {
     toggleMenu();
     e.preventDefault();
+  });
+
+  document.getElementById("toggle").addEventListener("keyup", function (e) {
+    e.preventDefault();
+    if (e.key === "Enter") {
+      toggleMenu();
+      e.preventDefault();
+    }
   });
 
   window.addEventListener(WINDOW_CHANGE_EVENT, closeMenu);
