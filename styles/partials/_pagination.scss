@@ -34,7 +34,6 @@
 
     a,
     .inactive-link {
-      color: var(--pagination-active-color);
       display: inline-flex;
       justify-content: center;
       align-items: center;
@@ -46,14 +45,18 @@
       border-radius: 1.25rem;
     }
 
+    a {
+      color: var(--pagination-active-color);
+    }
+
     a:hover,
     a:focus {
       text-decoration: underline;
     }
 
     .inactive-link {
-      color: var(--pagination-inactive-color);
-      cursor: not-allowed;
+      opacity: 0;
+      visibility: hidden;
     }
 
     .articles {
