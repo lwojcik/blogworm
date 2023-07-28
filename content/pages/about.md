@@ -19,9 +19,9 @@ I'm [Łukasz]({{ siteConfig.author.homepage }}). Hailing from Warsaw, Poland. Ni
 
 ## Can I suggest my blog?
 
-Sorry, not at the moment. I have a sizable backlog of blogs to process. I'll be adding them in small batches over time.
+Sorry, not at the moment. I have a sizable backlog of blogs to process and I'll be adding them in small batches over time.
 
-If we already met before (e.g. talked on [Mastodon]({{ siteConfig.author.mastodon }})?) - there's non-zero chance your blog is already on my list.
+If we have already met before (e.g. talked on [Mastodon]({{ siteConfig.author.mastodon }})?) - there's a non-zero chance your blog is already on my list and I'll reach out to you soon.
 
 If not, stay tuned. I'll update this section once I'm ready to accept submissions.
 
