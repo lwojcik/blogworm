@@ -1,4 +1,4 @@
-const { extract } = require("@extractus/feed-extractor");
+const feedExtractor = import("@extractus/feed-extractor");
 const faviconsPlugin = require("eleventy-plugin-gen-favicons");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const cacheAvatar = require("./_11ty/helpers/cacheAvatar");
@@ -39,6 +39,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("articles", async function (collectionApi) {
     try {
+      const extractor = await feedExtractor;
       const blogs = collectionApi
         .getFilteredByTag("site")
         .filter((item) => !item.data.disabled);
@@ -47,7 +48,7 @@ module.exports = function (eleventyConfig) {
         const { data } = blog;
         const { name, url, avatar, feed } = data;
 
-        const feedContent = await extract(feed, {
+        const feedContent = await extractor.extract(feed, {
           descriptionMaxLen: siteConfig.maxPostLength,
         });
 
@@ -72,7 +73,7 @@ module.exports = function (eleventyConfig) {
 
       return sortedItems;
     } catch (error) {
-      console.log(erorr);
+      console.log(error);
       throw new Error(error);
     }
   });
