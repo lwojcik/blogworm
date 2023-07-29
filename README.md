@@ -10,13 +10,11 @@ Yes! [Contact me](https://lukaszwojcik.net/contact/) or [submit an issue](https:
 
 See [About](https://blogworm.eu/about/) page.
 
-## Can I fork this site and set up my own?
+## Can I have a site like this for myself?
 
-Yes! It's a static site built with Eleventy. I'm working on detailed instructions on how to do it, stay tuned.
+Yes! It's a static site built with Eleventy and updated with GitHub Actions.
 
-If you're feeling adventurous right now - clone the repo, modify the list of sites you want to track (it's in `content/sites` directory), edit the site as you see fit and deploy it somewhere (e.g. on Netlify or Vercel).
-
-To run a scheduled build (i.e. have your site updated) you can use GitHub Actions. [I run my own one](https://github.com/lwojcik/github-action-deploy-static-site) but there are others in the [Marketplace](github.com/marketplace?type=actions)).
+For a reusable package ready to use, check out [Multiplicity - Eleventy RSS aggregator starter pack](https://github.com/lwojcik/eleventy-template-multiplicity).
 
 ## License
 
