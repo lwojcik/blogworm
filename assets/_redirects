@@ -1,3 +1,3 @@
-https://www.blogworm.eu/_ https://blogworm.eu/:splat 301!
+https://www.blogworm.eu/* https://blogworm.eu/:splat 301!
 https://blogworm.netlify.com/* https://blogworm.eu/:splat 301!
 https://blogworm.netlify.app/* https://blogworm.eu/:splat 301!
