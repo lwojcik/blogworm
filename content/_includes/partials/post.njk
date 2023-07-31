@@ -1,5 +1,5 @@
 <article class="article">
-<h2 class="post-title"><a href="{{ link | addRef }}">{{ title }}</a></h2>
+<h2 class="post-title"><a href="{{ link | addRef }}">{{ title|safe }}</a></h2>
 
 <div class="post-meta">
   <a href="{{ authorUrl | addRef }}" class="author">
