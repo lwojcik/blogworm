@@ -7,7 +7,11 @@
     </a>
   </h2>
   <div class="rss">
-    {% include "svg/rss.svg" %} <a href="{{ site.data.feed }}">RSS Feed</a>
+    {% if site.data.feedType == 'json' %}
+      {% include "svg/json.svg" %} <a href="{{ site.data.feed }}">JSON Feed</a>
+    {% else %}
+      {% include "svg/rss.svg" %} <a href="{{ site.data.feed }}">RSS Feed</a>
+    {% endif %}
   </div>
 </li>
 {% endif %}
