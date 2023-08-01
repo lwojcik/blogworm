@@ -1,4 +1,3 @@
-
 ---
 name: Ana Rodrigues
 url: https://ohhelloana.blog/
