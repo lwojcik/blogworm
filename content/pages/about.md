@@ -31,4 +31,4 @@ Sure! [Contact me]({{ siteConfig.author.contact }}) or [submit a GitHub issue]({
 
 ## Can I have a site like this for myself?
 
-Yes! This site is relatively uncomplicated. I'm still working on the tutorial explaining how to do it, stay tuned. You can also check out [project code on GitHub]({{ siteConfig.github.project }}).
+Yes! This site is relatively uncomplicated. I'm still working on the tutorial explaining how to do it, stay tuned. You can, however, grab a [starter template for a site like this](https://github.com/lwojcik/eleventy-template-multiplicity) or check out [project code on GitHub]({{ siteConfig.github.project }}).
