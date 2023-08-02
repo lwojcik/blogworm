@@ -1,7 +1,7 @@
 /*
   X-Frame-Options: DENY
   X-XSS-Protection: 1; mode=block
-  cache-control: max-age=900,public
+  cache-control: max-age=300,public
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 
 /favicon.*
