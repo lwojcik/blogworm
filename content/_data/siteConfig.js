@@ -3,6 +3,8 @@ const packageJson = require("../../package.json");
 module.exports = {
   title: "Blogworm",
   url: "https://blogworm.eu",
+  description:
+    "Aggregator of blogs written by fantastic people on the internet.",
   github: {
     project: "https://github.com/lwojcik/blogworm.eu",
     issue: "https://github.com/lwojcik/blogworm.eu/issues/new",
