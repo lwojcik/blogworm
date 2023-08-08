@@ -119,6 +119,9 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(pluginPWA, {
     cacheId: "blogworm",
+    globIgnores: [
+      'nortonsw_*.html'
+    ],
     runtimeCaching: [
       {
         urlPattern: /\/$/,
