@@ -51,6 +51,9 @@ module.exports = function (eleventyConfig) {
 
         const feedContent = await extractor.extract(feed, {
           descriptionMaxLen: siteConfig.maxPostLength,
+          headers: {
+            "user-agent": siteConfig.userAgent,
+          },
         });
 
         return feedContent.entries
@@ -119,9 +122,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(pluginPWA, {
     cacheId: "blogworm",
-    globIgnores: [
-      'nortonsw_*.html'
-    ],
+    globIgnores: ["nortonsw_*.html"],
     runtimeCaching: [
       {
         urlPattern: /\/$/,

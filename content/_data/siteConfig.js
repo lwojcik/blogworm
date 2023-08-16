@@ -9,6 +9,7 @@ module.exports = {
     project: "https://github.com/lwojcik/blogworm.eu",
     issue: "https://github.com/lwojcik/blogworm.eu/issues/new",
   },
+  userAgent: "Blogworm.eu",
   addRefToExternalLinks: false,
   ref: "blogworm.eu",
   language: "en",
