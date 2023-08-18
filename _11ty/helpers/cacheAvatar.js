@@ -29,7 +29,7 @@ module.exports = async ({ url, name }) => {
 
     if (!response.ok) {
       throw new Error(
-        `Failed to fetch the avatar: ${response.status} ${response.statusText}`
+        `Failed to fetch the avatar ${url}: ${response.status} ${response.statusText}`
       );
     }
 
