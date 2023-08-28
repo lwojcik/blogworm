@@ -20,6 +20,8 @@ const FILE_EXTENSIONS = {
   "image/vnd.microsoft.icon": "ico",
 };
 
+const SVG_MIME_TYPE = "image/svg+xml";
+
 const FILE_EXTENSIONS_NOT_TO_RESIZE = ["svg", "ico"];
 
 module.exports = async ({ url, name }) => {
@@ -30,8 +32,6 @@ module.exports = async ({ url, name }) => {
     if (url.startsWith("/")) {
       return url;
     }
-
-    // const response = await fetch(url);
 
     const imageBuffer = await EleventyFetch(url, {
       duration: siteConfig.localCacheDuration,
@@ -46,7 +46,7 @@ module.exports = async ({ url, name }) => {
     const isFileSvg = detectSvg(imageBuffer.toString());
 
     const { mime: contentType } = isFileSvg
-      ? { mime: "image/svg+xml" }
+      ? { mime: SVG_MIME_TYPE }
       : await detectImageType(imageBuffer);
 
     const extension = FILE_EXTENSIONS[contentType];
