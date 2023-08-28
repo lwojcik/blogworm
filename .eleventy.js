@@ -1,3 +1,4 @@
+const EleventyFetch = require("@11ty/eleventy-fetch");
 const feedExtractor = import("@extractus/feed-extractor");
 const faviconsPlugin = require("eleventy-plugin-gen-favicons");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
@@ -9,7 +10,7 @@ const addRef = require("./_11ty/helpers/addRef");
 const minifyHTML = require("./_11ty/helpers/minifyHTML");
 const siteConfig = require("./content/_data/siteConfig");
 const minifyXML = require("./_11ty/helpers/minifyXML");
-const stripAndTruncateHTML = require("./_11ty/helpers/stripAndTruncateHTML");
+// const stripAndTruncateHTML = require("./_11ty/helpers/stripAndTruncateHTML");
 
 module.exports = function (eleventyConfig) {
   // --- Copy assets
@@ -47,14 +48,23 @@ module.exports = function (eleventyConfig) {
 
       const allSiteFeeds = blogs.map(async (blog) => {
         const { data } = blog;
-        const { name, url, avatar, feed } = data;
+        const { name, url, avatar, feed, type: feedType } = data;
 
-        const feedContent = await extractor.extract(feed, {
-          descriptionMaxLen: siteConfig.maxPostLength,
-          headers: {
-            "user-agent": siteConfig.userAgent,
+        const feedData = await EleventyFetch(feed, {
+          duration: siteConfig.localCacheDuration,
+          type: feedType === "json" ? "json" : "text",
+          verbose: process.env.ELEVENTY_ENV === "development",
+          fetchOptions: {
+            headers: {
+              "user-agent": siteConfig.userAgent,
+            },
           },
         });
+
+        const feedContent =
+          feedType === "json"
+            ? extractor.extractFromJson(feedData)
+            : extractor.extractFromXml(feedData);
 
         return feedContent.entries
           .map((entry) => ({
