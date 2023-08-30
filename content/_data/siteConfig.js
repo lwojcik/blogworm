@@ -31,5 +31,5 @@ module.exports = {
   },
   maxPostLength: 500,
   maxItemsPerFeed: 10,
-  localCacheDuration: "7d",
+  localCacheDuration: "6h",
 };
