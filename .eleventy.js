@@ -47,61 +47,79 @@ module.exports = function (eleventyConfig) {
         .filter((item) => !item.data.disabled);
 
       const allSiteFeeds = blogs.map(async (blog) => {
-        const { data } = blog;
-        const { name, url, avatar, feed, type: feedType } = data;
+        try {
+          const { data } = blog;
+          const { name, url, avatar, feed, feedType } = data;
 
-        const feedData = await EleventyFetch(feed, {
-          duration: siteConfig.localCacheDuration,
-          type: feedType === "json" ? "json" : "text",
-          verbose: process.env.ELEVENTY_ENV === "development",
-          fetchOptions: {
-            headers: {
-              "user-agent": siteConfig.userAgent,
+          const feedData = await EleventyFetch(feed, {
+            duration: siteConfig.localCacheDuration,
+            type: feedType === "json" ? "json" : "text",
+            verbose: process.env.ELEVENTY_ENV === "development",
+            fetchOptions: {
+              headers: {
+                "user-agent": siteConfig.userAgent,
+              },
             },
-          },
-        });
+          });
 
-        const extractOptions = {
-          getExtraEntryFields: (item) => {
-            try {
-              if (item.content["#text"]?.length > 0) {
-                const htmlDescription = stripAndTruncateHTML(
-                  item.content["#text"],
-                  siteConfig.maxPostLength
-                );
+          const extractOptions = {
+            getExtraEntryFields: (item) => {
+              try {
+                if (item.content["#text"]?.length > 0) {
+                  const htmlDescription = stripAndTruncateHTML(
+                    item.content["#text"],
+                    siteConfig.maxPostLength
+                  );
 
-                return {
-                  htmlDescription,
-                };
-              } else {
+                  return {
+                    htmlDescription,
+                  };
+                } else {
+                  return {
+                    htmlDescription: "",
+                  };
+                }
+              } catch (error) {
                 return {
                   htmlDescription: "",
                 };
               }
-            } catch (error) {
-              return {
-                htmlDescription: "",
-              };
-            }
-          },
-        };
-
-        const feedContent =
-          feedType === "json"
-            ? extractor.extractFromJson(feedData, extractOptions)
-            : extractor.extractFromXml(feedData, extractOptions);
-
-        return feedContent.entries
-          .map((entry) => ({
-            ...entry,
-            avatar,
-            author: {
-              name,
-              url,
             },
-          }))
-          .sort((a, b) => new Date(b.published) - new Date(a.published))
-          .slice(0, siteConfig.maxItemsPerFeed);
+          };
+
+          const parsedFeedData =
+            feedType === "json" && typeof feedData === "string"
+              ? JSON.parse(feedData)
+              : feedData;
+
+          const feedContent =
+            feedType === "json"
+              ? {
+                  entries: parsedFeedData.items.map((item) => ({
+                    ...item,
+                    published: item.date_published,
+                    description: stripAndTruncateHTML(
+                      item.content_html,
+                      siteConfig.maxPostLength
+                    ),
+                  })),
+                }
+              : extractor.extractFromXml(feedData, extractOptions);
+
+          return feedContent.entries
+            .map((entry) => ({
+              ...entry,
+              avatar,
+              author: {
+                name,
+                url,
+              },
+            }))
+            .sort((a, b) => new Date(b.published) - new Date(a.published))
+            .slice(0, siteConfig.maxItemsPerFeed);
+        } catch (error) {
+          console.log(error);
+        }
       });
 
       const allArticles = await getFulfilledValues(allSiteFeeds);
