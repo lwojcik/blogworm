@@ -24,7 +24,13 @@ permalink: "{% if pagination.pageNumber > 0 %}/page/{{ pagination.pageNumber + 1
   {% set authorUrl = item.author.url %}
   {% set authorName = item.author.name %}
   {% set published = item.published|readableDate %}
-  {% set description = item.description | safe %}
+  {% set description %}
+    {# {% if item.htmlDescription %} #}
+      {{ item.htmlDescription }}sss
+    {# {% else %}
+      {{ item.description }}
+    {% endif %} #}
+  {% endset %}
   {% include "partials/post.njk" %}
 {% endfor %}
 

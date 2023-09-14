@@ -1,11 +1,14 @@
+const { stripHtml } = require("string-strip-html");
+
 module.exports = (input, maxLength) => {
-  const strippedString = input.replace(/<[^>]*>/g, "");
+  const strippedString = stripHtml(input).result;
+
+  const lastSpaceIndex = strippedString.lastIndexOf(" ", maxLength);
 
   if (strippedString.length <= maxLength) {
     return strippedString;
   }
 
-  const lastSpaceIndex = strippedString.lastIndexOf(" ", maxLength);
   const truncatedString =
     lastSpaceIndex > 0
       ? strippedString.substring(0, lastSpaceIndex) + "..."

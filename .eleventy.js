@@ -10,6 +10,7 @@ const addRef = require("./_11ty/helpers/addRef");
 const minifyHTML = require("./_11ty/helpers/minifyHTML");
 const siteConfig = require("./content/_data/siteConfig");
 const minifyXML = require("./_11ty/helpers/minifyXML");
+const stripAndTruncateHTML = require("./_11ty/helpers/stripAndTruncateHTML");
 
 module.exports = function (eleventyConfig) {
   // --- Copy assets
@@ -60,10 +61,35 @@ module.exports = function (eleventyConfig) {
           },
         });
 
+        const extractOptions = {
+          getExtraEntryFields: (item) => {
+            try {
+              if (item.content["#text"]?.length > 0) {
+                const htmlDescription = stripAndTruncateHTML(
+                  item.content["#text"],
+                  siteConfig.maxPostLength
+                );
+
+                return {
+                  htmlDescription,
+                };
+              } else {
+                return {
+                  htmlDescription: "",
+                };
+              }
+            } catch (error) {
+              return {
+                htmlDescription: "",
+              };
+            }
+          },
+        };
+
         const feedContent =
           feedType === "json"
-            ? extractor.extractFromJson(feedData)
-            : extractor.extractFromXml(feedData);
+            ? extractor.extractFromJson(feedData, extractOptions)
+            : extractor.extractFromXml(feedData, extractOptions);
 
         return feedContent.entries
           .map((entry) => ({
