@@ -25,13 +25,6 @@ canonical: /
   {% set authorUrl = item.author.url %}
   {% set authorName = item.author.name %}
   {% set published = item.published|readableDate %}
-  {% set description %}
-    {# {% if item.htmlDescription %} #}
-      {{ item.htmlDescription }}sss
-    {# {% else %}
-      {{ item.description }}
-    {% endif %} #}
-  {% endset %}
   {% include "partials/post.njk" %}
 {% endfor %}
 
