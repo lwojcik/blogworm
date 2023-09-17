@@ -3,6 +3,7 @@ layout: page
 title: Legal
 eleventyExcludeFromCollections: true
 permalink: /legal/
+canonical: /legal/
 ---
 
 All rights to the content featured on the site belong to the respective owners of that content.

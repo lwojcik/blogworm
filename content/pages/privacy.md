@@ -3,6 +3,7 @@ layout: page
 title: Privacy policy
 eleventyExcludeFromCollections: true
 permalink: /privacy/
+canonical: /privacy/
 ---
 
 This site aims to respect your privacy as much as possible.
