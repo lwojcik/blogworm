@@ -3,6 +3,7 @@ layout: page
 title: About Blogworm
 eleventyExcludeFromCollections: true
 permalink: /about/
+canonical: /about/
 ---
 
 **Blogworm** is an aggregator of blogs written by fantastic people I met on the internet.
