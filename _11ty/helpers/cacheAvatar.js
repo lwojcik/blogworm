@@ -18,6 +18,7 @@ const FILE_EXTENSIONS = {
   "image/gif": "gif",
   "image/x-icon": "ico",
   "image/vnd.microsoft.icon": "ico",
+  "image/svg+xml": "svg",
 };
 
 const SVG_MIME_TYPE = "image/svg+xml";

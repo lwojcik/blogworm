@@ -29,7 +29,7 @@ module.exports = {
   dateFormats: {
     readable: "d LLL yyyy",
   },
-  maxPostLength: 500,
+  maxPostLength: 300,
   maxItemsPerFeed: 10,
   localCacheDuration: "6h",
 };
