@@ -19,7 +19,13 @@ canonical: /
 </header>
 
 {% for item in items %}
-  {% set link = item.link %}
+  {% set link %}
+    {% if item.url %}
+      {{ item.url }}
+    {% else %}
+      {{ item.link}}
+    {% endif %}
+  {% endset %}
   {% set title = item.title %}
   {% set avatar = item.avatar %}
   {% set authorUrl = item.author.url %}
