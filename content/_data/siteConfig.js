@@ -23,7 +23,7 @@ module.exports = {
     name: "Łukasz Wójcik",
     homepage: "https://lukaszwojcik.net/",
     contact: "https://lukaszwojcik.net/contact/",
-    blog: "https://offbeatbits.com/",
+    blog: "https://blog.lukaszwojcik.net/",
     mastodon: "https://hachyderm.io/@lukem",
   },
   dateFormats: {
