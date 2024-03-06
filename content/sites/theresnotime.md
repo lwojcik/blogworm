@@ -1,6 +1,6 @@
 ---
-name: TheresNoTime
+name: Sammy
 url: https://words.theresnotime.co.uk/
-avatar: https://i0.wp.com/words.theresnotime.co.uk/wp-content/uploads/2022/07/cropped-fox-emoji_padded.png
-feed: https://words.theresnotime.co.uk/feed/atom/
+avatar: https://blogworm.eu/images/default_avatar.jpg
+feed: https://words.theresnotime.co.uk/index.xml
 ---
