@@ -6,8 +6,8 @@ module.exports = {
   description:
     "Aggregator of blogs written by fantastic people on the internet.",
   github: {
-    project: "https://github.com/lwojcik/blogworm.eu",
-    issue: "https://github.com/lwojcik/blogworm.eu/issues/new",
+    project: "https://github.com/lwojcik/blogworm",
+    issue: "https://github.com/lwojcik/blogworm/issues/new",
   },
   userAgent: "Blogworm.eu",
   addRefToExternalLinks: false,
