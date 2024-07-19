@@ -1,6 +1,6 @@
 {
   "name": "blogworm.eu",
-  "version": "2024.5.19",
+  "version": "2024.7.19",
   "private": true,
   "scripts": {
     "prebuild": "npm run clean",
